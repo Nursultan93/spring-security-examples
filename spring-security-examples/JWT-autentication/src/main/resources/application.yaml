@@ -18,5 +18,5 @@ logging:
     root: info
 
 token:
-  signature: Elcin Spring Oyrenir
-  expiredDate: 900000
+  signature: RWxjaW4gU3ByaW5nIE95cmVuaXI=
+  expiredDate: 60000

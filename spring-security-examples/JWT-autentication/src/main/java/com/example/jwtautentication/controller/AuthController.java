@@ -1,29 +1,31 @@
 package com.example.jwtautentication.controller;
 
+import com.example.jwtautentication.dto.AuthResponse;
 import com.example.jwtautentication.dto.LoginRequest;
 import com.example.jwtautentication.model.User;
-import com.example.jwtautentication.service.UserServiceImpl;
+import com.example.jwtautentication.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(value = "/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-  private final UserServiceImpl userService;
+  private final AuthService authService;
 
   @PostMapping("/register")
-  public User register(@RequestBody User user) {
-    return userService.create(user);
+  public AuthResponse register(@RequestBody User user) {
+    return authService.register(user);
   }
 
-  @PostMapping("/login")
-  public String login(@RequestBody LoginRequest request) {
-    return userService.autenticate(request);
+  @PostMapping("/sing-in")
+  public AuthResponse singIn(@RequestBody LoginRequest request) {
+    return authService.singIn(request);
   }
+
 }
